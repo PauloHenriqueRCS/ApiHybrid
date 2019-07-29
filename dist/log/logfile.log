@@ -1,0 +1,28 @@
+{"level":"info","message":"server started at http://localhost:8080"}
+2019-07-29 19:45:42 info: connect success2019-7-29 19:45:42 [success] info: server started
+2019-07-29 19:54:06 info: connect success2019-7-29 19:54:06 [server connect]:  info: connect success
+2019-07-29 20:20:34 info: connect success() => {
+    return moment_1.default().format("dd/MM/YYYY, hh:mm:ss a");
+} [server connect]:  info: connect success
+2019-07-29 20:22:32 info: connect success() => {
+    return moment_1.default().format("dd/MM/YYYY, hh:mm:ss a").toString();
+} [server connect]:  info: connect success
+29-07-2019 20:25:03 pm info: connect successserver connect
+29-07-2019 20:26:25 pm info:
+29-07-2019 20:27:12 pm info: connect successserver connect
+29-07-2019 20:29:28 pm info: connect success
+{date: 29-07-2019 20:32:04 pm, level: info, message: connect success},
+{date: "29-07-2019 20:33:22 pm", level: "info", message: "connect success}"
+{"date": "29-07-2019 20:34:26 pm", "level": "info", "message": "connect success"}
+{
+        "level": "info",
+        "date": "29-07-2019 20:35:54",
+        "message": "connect success"
+      }
+{"level": "info","date": "29-07-2019 20:40:17","message": "connect success"}
+{"level": "info","date": "29-07-2019 20:43:45","message": "connect success"}
+{"level": "info","date": "29-07-2019 20:43:51","message": "connect success"}
+{"level": "info","date": "29-07-2019 20:44:39","message": "connect success"}
+{"level": "info","date": "29-07-2019 20:44:45","message": "connect success"}
+{"level": "info","date": "29-07-2019 20:45:18","message": "connect success"}
+{"level": "info","date": "29-07-2019 20:46:14","message": "connect success"}
