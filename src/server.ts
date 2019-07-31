@@ -1,14 +1,24 @@
 import app from "./app";
-import logger from "./log/logger";
+import "./utils/config"
+import logger from "./logger";
 
-const port = 8080;
 
-const server = new app().Start(port)
-    .then(() =>
-        logger.info("connect success"))
-    .catch((error) => {
+const port = 3333;
+
+const start = (port: number) => {
+    try {
+        new Promise((resolve, reject) => {
+            app.listen(port, () => {
+                resolve(port);
+            });
+        });
+        return logger.info("connect success");
+    }
+    catch (error) {
         logger.log("error", new Error("connect failed").message);
         process.exit(1);
-    });
+    }
+}
 
-export default server;
+
+start(port)

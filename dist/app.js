@@ -1,30 +1,37 @@
-"use strict";
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
-    result["default"] = mod;
-    return result;
-};
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const bodyParser = __importStar(require("body-parser"));
-const express_1 = __importDefault(require("express"));
+"use strict"; function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { newObj[key] = obj[key]; } } } newObj.default = obj; return newObj; } } function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }Object.defineProperty(exports, "__esModule", {value: true});var _bodyparser = require('body-parser'); var bodyParser = _interopRequireWildcard(_bodyparser);
+var _express = require('express'); var _express2 = _interopRequireDefault(_express);
+var _mongoose = require('mongoose'); var _mongoose2 = _interopRequireDefault(_mongoose);
+
+var _cors = require('cors'); var _cors2 = _interopRequireDefault(_cors);
+
 class App {
+    
+
     constructor() {
-        this.Start = (port) => {
-            return new Promise((resolve, reject) => {
-                this.httpServer.listen(port, () => {
-                    resolve(port);
-                }).on("error", (err) => reject(err));
-            });
-        };
-        this.httpServer = express_1.default();
-        this.httpServer.use(bodyParser.urlencoded({ extended: true }));
-        this.httpServer.use(bodyParser.json());
+        this.express = _express2.default.call(void 0, )
+        this.middlewares()
+        this.database()
+        this.routes()
+    }
+
+     middlewares() {
+        this.express.use(bodyParser.urlencoded({ extended: true }))
+        this.express.use(bodyParser.json())
+        this.express.use(_express2.default.json())
+        this.express.use(_cors2.default.call(void 0, ))
+    }
+
+     database() {
+        _mongoose2.default.connect('', {
+            useNewUrlParser: true
+        })
+    }
+
+     routes() {
+        this.express.get('/', (req, res) => {
+            return res.send('Ok')
+        })
     }
 }
-exports.default = App;
-//# sourceMappingURL=app.js.map
+
+exports. default = new App().express

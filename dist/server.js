@@ -1,16 +1,23 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const app_1 = __importDefault(require("./app"));
-const logger_1 = __importDefault(require("./log/logger"));
-const port = 8080;
-const server = new app_1.default().Start(port)
-    .then(() => logger_1.default.info("connect success"))
-    .catch((error) => {
-    logger_1.default.log("error", new Error("connect failed").message);
-    process.exit(1);
-});
-exports.default = server;
-//# sourceMappingURL=server.js.map
+"use strict"; function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var _app = require('./app'); var _app2 = _interopRequireDefault(_app);
+require('./utils/config');
+var _logger = require('./logger'); var _logger2 = _interopRequireDefault(_logger);
+
+
+const port = 3333;
+
+const start = (port) => {
+    try {
+        new Promise((resolve, reject) => {
+            _app2.default.listen(port, () => {
+                resolve(port);
+            });
+        });
+        return _logger2.default.info("connect success");
+    }
+    catch (error) {
+        _logger2.default.log("error", new Error("connect failed").message);
+        process.exit(1);
+    }
+}
+
+start(port)

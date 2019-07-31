@@ -1,22 +1,37 @@
-import * as bodyParser from "body-parser";
-import express from "express";
+import * as bodyParser from "body-parser"
+import express from "express"
+import mongoose from "mongoose"
+import logger from "./logger";
+import cors from "cors"
 
 class App {
-    private httpServer: any;
+    public express: express.Application
 
     constructor() {
-        this.httpServer = express();
-        this.httpServer.use(bodyParser.urlencoded({ extended: true }));
-        this.httpServer.use(bodyParser.json());
+        this.express = express()
+        this.middlewares()
+        //this.database()
+        this.routes()
     }
 
-    public Start = (port: number) => {
-        return new Promise((resolve, reject) => {
-            this.httpServer.listen(port, () => {
-                resolve(port);
-            }).on("error", (err: object) => reject(err));
-        });
+    private middlewares(): void {
+        this.express.use(bodyParser.urlencoded({ extended: true }))
+        this.express.use(bodyParser.json())
+        this.express.use(express.json())
+        this.express.use(cors())
+    }
+
+    private database(): void {
+        mongoose.connect('', {
+            useNewUrlParser: true
+        })
+    }
+
+    private routes(): void {
+        this.express.get('/', (req, res) => {
+            return res.send('Ok')
+        })
     }
 }
 
-export default App;
+export default new App().express
