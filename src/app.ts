@@ -1,8 +1,13 @@
 import * as bodyParser from "body-parser"
 import express from "express"
 import mongoose from "mongoose"
-import logger from "./logger";
 import cors from "cors"
+
+import routes from './routes'
+import logger from "./logger";
+
+
+
 
 class App {
     public express: express.Application
@@ -28,9 +33,7 @@ class App {
     }
 
     private routes(): void {
-        this.express.get('/', (req, res) => {
-            return res.send('Ok')
-        })
+        this.express.use(routes)
     }
 }
 
